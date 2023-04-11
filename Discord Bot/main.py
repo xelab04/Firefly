@@ -16,6 +16,8 @@ bot_channel = 716889120814923817
 general = 716889730716925972
 rules = 716886040849154129
 
+KEY = input("KEY >>> ")
+
 
 @client.event
 async def on_ready():
@@ -265,4 +267,4 @@ async def halp(ctx):
 
 
 cmds = "ping,clear,doge,swear,whereserver"
-client.run('NzE3MDAzMzQ2NzE1NjA3MDkw.XtT_4g.KtweE-pCSVVT-UNkkAghaWQSJig')
+client.run(KEY)
