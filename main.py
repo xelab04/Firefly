@@ -74,15 +74,6 @@ async def doge(ctx):
 
 
 @client.command()
-async def swear(ctx):
-    # channel = client.get_channel(bot_channel)
-    if random.randint(1, 50) == 50:
-        await ctx.channel.send(xdata.ultra_swear)
-    else:
-        await ctx.channel.send(random.choice(xdata.swear_list))
-
-
-@client.command()
 async def whereserver(ctx):
     if str(ctx.message.author) not in xdata.users:
         await ctx.channel.send("You do not have the permission to view my public IP.")
@@ -201,71 +192,6 @@ def already_reg(discord_username, phone_no, rows):
             return True
 
     return False
-'''
-def set_role(ctx, user, grade):
-    # usr: discord.Member
-    member = ctx.message.author
-
-    role_txt = str(grade)
-    role = get(member.server.roles, name=role_txt)
-    await user.add_roles(role)
-
-    if int(grade) <= 10:
-        role_txt = "Junior"
-    else:
-        role_txt = "Senior"
-
-    role = get(member.server.roles, name=role_txt)
-    await user.add_roles(role)
-'''
-
-'''
-@client.command(pass_context=True)
-async def chnick(ctx, member: discord.Member, nick):
-    await member.edit(nick=nick)
-    await ctx.send(f'Nickname was changed for {member.mention} ')
-'''
-
-'''
-@client.command()
-async def who_online(ctx):
-    files = []
-    for file in os.listdir(xdata.logs):
-        if os.path.isfile(os.path.join(xdata.logs, file)):
-            files.append(file)
-
-    #create dictionary
-    latest_log = "/" + max(files)
-    user_state = {}
-    for user in xdata.user_xbox:
-        user_state[user] = False
-
-    #open file and change user states
-    with open(xdata.logs+latest_log,"r") as file:
-        lines = file.readlines()
-        for line in lines:
-            for user in xdata.user_xbox:
-                if user in line:
-                    user_state[user] = not user_state[user]
-
-    string = ""
-    for key,key_data in user_state.items():
-        if key_data:
-            key_data = "Online"
-        else:
-            key_data = "Offline"
-
-        string +=  key + " : " + str(key_data) + "\n"
-
-    await ctx.channel.send(string)
-'''
-
-'''
-@client.command()
-async def start_server(ctx):
-    text_return = subprocess.check_output("/home/alex/minecraftbe/MC/start.sh")
-    await ctx.channel.send(text_return)
-'''
 
 
 @client.command()
@@ -273,5 +199,5 @@ async def halp(ctx):
     await ctx.channel.send(cmds)
 
 
-cmds = "ping,clear,doge,swear,whereserver"
+cmds = "ping,clear,doge,whereserver,verify"
 client.run(KEY)
